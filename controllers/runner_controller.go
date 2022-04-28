@@ -630,7 +630,7 @@ func newRunnerPod(runnerName string, template corev1.Pod, runnerSpec v1alpha1.Ru
 	pod := template.DeepCopy()
 
 	if pod.Spec.RestartPolicy == "" {
-		pod.Spec.RestartPolicy = "OnFailure"
+		pod.Spec.RestartPolicy = corev1.RestartPolicyNever
 	}
 
 	if mtu := runnerSpec.DockerMTU; mtu != nil && dockerdInRunner {
