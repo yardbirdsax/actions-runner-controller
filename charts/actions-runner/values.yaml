@@ -20,6 +20,27 @@ replicaCount: 1
 # See https://docs.github.com/en/github-ae@latest/actions/hosting-your-own-runners/managing-access-to-self-hosted-runners-using-groups.
 group: Default
 
+# Extra volumes that can be mounted in various containers. See https://github.com/actions-runner-controller/actions-runner-controller#custom-volume-mounts.
+volumes: []
+  # - name: aws
+  #   emptyDir:
+  # - name: ssh
+  #   emptyDir:
+
+# Volumes that can be mounted to the runner container.
+volumeMounts: []
+  # - mountPath: /home/runner/.aws
+  #   name: aws
+  # - mountPath: /home/runner/.ssh
+  #   name: ssh
+
+# Volumes that can be mounted to the DinD container
+dockerVolumeMounts: []
+  # - mountPath: /home/runner/.aws
+  #   name: aws
+  # - mountPath: /home/runner/.ssh
+  #   name: ssh
+
 autoscaler:
   enabled: true
   minReplicas: 1

@@ -69,6 +69,18 @@ items:
           value: {{ $val | quote }}
         {{- end }}
         {{- end }}
+        {{- with .Values.volumes }}
+        volumes:
+          {{- toYaml . | nindent 10 }}
+        {{- end }}
+        {{- with .Values.volumeMounts }}
+        volumeMounts:
+          {{- toYaml . | nindent 10 }}
+        {{- end }}
+        {{- with .Values.dockerVolumeMounts }}
+        dockerVolumeMounts:
+          {{- toYaml . | nindent 10 }}
+        {{- end }}
 {{- if .Values.autoscaler.enabled }}
 - apiVersion: actions.summerwind.dev/v1alpha1
   kind: HorizontalRunnerAutoscaler
